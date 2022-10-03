@@ -38,9 +38,6 @@ jobs:
 
       - name: Run ESLint
         run: npx eslint .
-          --fix-dry-run
-          --fix-type problem
-          --fix-type suggestion
           --ext .js,.jsx,.ts,.tsx
           --global log,module,define
           --format @microsoft/eslint-formatter-sarif 
