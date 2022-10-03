@@ -1,0 +1,22 @@
+{
+  "name": "esmart-interco-automation",
+  "version": "1.0.0",
+  "description": "Intercompany Invoice / PO / SO / Bill automation for US subsidiary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhorrock/ESMART-Interco-Automation.git"
+  },
+  "author": "Blaine Horrocks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhorrock/ESMART-Interco-Automation/issues"
+  },
+  "homepage": "https://github.com/bhorrock/ESMART-Interco-Automation#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0"
+  }
+}
