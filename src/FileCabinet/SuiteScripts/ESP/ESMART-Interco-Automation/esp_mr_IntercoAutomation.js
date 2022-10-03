@@ -19,7 +19,6 @@
  *
  * @author Blaine Horrocks
  */
-/*global require,define,log */
 
 define(['N/runtime','N/search','N/record'],
 (runtime, search, record) => {
