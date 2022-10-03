@@ -38,7 +38,6 @@ jobs:
 
       - name: Run ESLint
         run: npx eslint .
-          --config .eslintrc.js
           --fix-dry-run
           --fix-type problem
           --fix-type suggestion
