@@ -19,8 +19,6 @@
  *
  * @author Blaine Horrocks
  */
-/* global log */
-
 define(['N/runtime','N/search','N/record'],
 (runtime, search, record) => {
 
