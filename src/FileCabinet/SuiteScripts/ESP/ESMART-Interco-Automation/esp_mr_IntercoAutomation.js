@@ -69,6 +69,7 @@ define(['N/runtime','N/search','N/record'],
         let scriptParamFunc = runtime.getCurrentScript().getParameter;
         let globalParamFunc = runtime.getCurrentUser().getPreference;
 
+     let junk = "something"
 
         for (var sParameter in PARAMETERS) {
             let oParam = PARAMETERS[sParameter];
