@@ -11,7 +11,7 @@ jobs:
     - name: Install dependencies
       run: |
         # Install XPath library
-        npm install xpath xmldom
+        npm install xpath @xmldom/xmldom
         
   check-xml-elements:
     runs-on: ubuntu-latest
