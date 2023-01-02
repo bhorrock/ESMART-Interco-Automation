@@ -19,6 +19,8 @@
  *
  * @author Blaine Horrocks
  */
+/*global define,log */
+
 define(['N/runtime','N/search','N/record'],
 (runtime, search, record) => {
 
@@ -69,7 +71,6 @@ define(['N/runtime','N/search','N/record'],
         let scriptParamFunc = runtime.getCurrentScript().getParameter;
         let globalParamFunc = runtime.getCurrentUser().getPreference;
 
-     let junk = "something"
 
         for (var sParameter in PARAMETERS) {
             let oParam = PARAMETERS[sParameter];
@@ -417,7 +418,7 @@ define(['N/runtime','N/search','N/record'],
 
         getParameters();
 
-        let oInvoice, oPurchaseOrder, oSalesOrder, oVendorBill, oIntercoInvoice;
+        let oInvoice, oPurchaseOrder, oSalesOrder, oVendorBill;
 
         // Get the root invoice record to process
         try {
@@ -521,7 +522,7 @@ define(['N/runtime','N/search','N/record'],
          * Create the Bill in the Parent for the newly created Sales Order
          */
         try {
-            oIntercoInvoice = record.transform({
+            let oIntercoInvoice = record.transform({
                 fromType: record.Type.SALES_ORDER,
                 fromId: oSalesOrder.id,
                 toType: record.Type.INVOICE,
@@ -580,7 +581,6 @@ define(['N/runtime','N/search','N/record'],
          */
 
     }
-
 
 
     /**
