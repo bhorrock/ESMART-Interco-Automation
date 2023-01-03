@@ -13,23 +13,37 @@ jobs:
   #       # Install XPath library
   #       npm install xpath @xmldom/xmldom
         
-  check-xml-elements:
+  # check-xml-elements:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Check for missing XML elements
+  #     run: |        
+  #       # Install XPath library
+  #       npm install xpath @xmldom/xmldom
+  #       # Iterate over all XML files in the repository
+  #       for file in $(find . -name "*.xml"); do
+  #         # Parse XML file using XPath library
+  #         node -e "const xpath = require('xpath'); const dom = require('xpath/lib/dom'); const fs = require('fs'); const xml = fs.readFileSync('$file', 'utf8'); const doc = new dom.DOMParser().parseFromString(xml); const nodes = xpath.select('//help | //description', doc); for (const node of nodes) { if (!node.firstChild || !node.firstChild.data.trim()) console.log('Empty element found in file $file'); }"
+  #       done
+        
+  #       # Check if any empty elements were found
+  #       if [[ -n $(cat error.log) ]]; then
+  #         # Use GitHub REST API to create a comment on the relevant pull request
+  #         curl -H "Authorization: Bearer $GITHUB_TOKEN" -X POST -d '{"body":"Empty `<help/>` or `<description/>` element found in one or more XML files. Please add content to these elements."}' https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PULL_REQUEST_NUMBER/comments
+  #       fi
+
+  scan-xml:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Check for missing XML elements
-      run: |        
-        # Install XPath library
-        npm install xpath @xmldom/xmldom
-        # Iterate over all XML files in the repository
-        for file in $(find . -name "*.xml"); do
-          # Parse XML file using XPath library
-          node -e "const xpath = require('xpath'); const dom = require('xpath/lib/dom'); const fs = require('fs'); const xml = fs.readFileSync('$file', 'utf8'); const doc = new dom.DOMParser().parseFromString(xml); const nodes = xpath.select('//help | //description', doc); for (const node of nodes) { if (!node.firstChild || !node.firstChild.data.trim()) console.log('Empty element found in file $file'); }"
-        done
-        
-        # Check if any empty elements were found
-        if [[ -n $(cat error.log) ]]; then
-          # Use GitHub REST API to create a comment on the relevant pull request
-          curl -H "Authorization: Bearer $GITHUB_TOKEN" -X POST -d '{"body":"Empty `<help/>` or `<description/>` element found in one or more XML files. Please add content to these elements."}' https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PULL_REQUEST_NUMBER/comments
-        fi
-
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          python -m pip install lxml
+      - name: Scan XML
+        run: |
+          python -c "import lxml.etree as ET; root = ET.parse('path/to/xml/file.xml').getroot(); for elem in root.iter('help'): print(elem.text if elem.text else 'Missing content in element')"
