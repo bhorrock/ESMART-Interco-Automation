@@ -18,10 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Check for missing XML elements
-      run: |
-        # Install XPath library
-        npm install xpath
-        
+      run: |        
         # Iterate over all XML files in the repository
         for file in $(find . -name "*.xml"); do
           # Parse XML file using XPath library
