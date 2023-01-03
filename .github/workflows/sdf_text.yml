@@ -4,14 +4,14 @@ on:
   pull_request:
 
 jobs:
-  install-dependencies:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: |
-        # Install XPath library
-        npm install xpath @xmldom/xmldom
+  # install-dependencies:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Install dependencies
+  #     run: |
+  #       # Install XPath library
+  #       npm install xpath @xmldom/xmldom
         
   check-xml-elements:
     runs-on: ubuntu-latest
@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Check for missing XML elements
       run: |        
+        # Install XPath library
+        npm install xpath @xmldom/xmldom
         # Iterate over all XML files in the repository
         for file in $(find . -name "*.xml"); do
           # Parse XML file using XPath library
