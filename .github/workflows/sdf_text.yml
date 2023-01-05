@@ -46,4 +46,10 @@ jobs:
           python -m pip install lxml
       - name: Scan XML
         run: |
-          python -c "import os, lxml.etree as ET; path = 'src/Objects'; for file in os.listdir(path): if file.endswith('.xml'): root = ET.parse(os.path.join(path, file)).getroot(); for elem in root.iter('help'): print(f'{file}: {elem.text if elem.text else 'Missing content in element'}');"
+          python -c "import os, lxml.etree as ET; path = 'src/Objects'; for file in os.listdir(path): if file.endswith('.xml'): root = ET.parse(os.path.join(path, file)).getroot(); for elem in root.iter('help'): if not elem.text: os.system('echo ::set-output name=missing_content::true')"
+        id: scan
+      - name: Comment on pull request
+        if: steps.scan.outputs.missing_content == 'true'
+        run: |
+          import os, requests
+          url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/issues/{os.environ['GITHUB_EVENT_NUMBER']}/comments
