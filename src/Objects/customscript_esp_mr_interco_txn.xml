@@ -20,7 +20,7 @@
       <displaywidth></displaywidth>
       <dynamicdefault></dynamicdefault>
       <fieldtype>INTEGER</fieldtype>
-      <help>The largest number of records that will be processed in a run.</help>
+      <help></help>
       <isformula>F</isformula>
       <ismandatory>T</ismandatory>
       <label>Maximum Batch Size</label>
@@ -47,7 +47,7 @@
       <displaywidth></displaywidth>
       <dynamicdefault></dynamicdefault>
       <fieldtype>PERCENT</fieldtype>
-      <help>The percentage of the subscription amount that is transferred to the parent subsidiary</help>
+      <help></help>
       <isformula>F</isformula>
       <ismandatory>T</ismandatory>
       <label>Parent Split Percentage</label>
@@ -68,7 +68,7 @@
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
       <defaultvalue></defaultvalue>
-      <description>The vendor in the parent company to which the purchase order is assigned.</description>
+      <description></description>
       <displayheight></displayheight>
       <displaytype>NORMAL</displaytype>
       <displaywidth></displaywidth>
