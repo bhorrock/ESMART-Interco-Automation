@@ -1,6 +1,7 @@
 name: Check for missing XML elements
 
 on: 
+  push:
   pull_request:
 
 jobs:
