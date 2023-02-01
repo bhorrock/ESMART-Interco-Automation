@@ -23,6 +23,7 @@
 
 define(['N/runtime','N/search','N/record'],
 (runtime, search, record) => {
+    const FOO = "bar";
 
     // Environment specific constants that might change in the installation
     const NS_ENV = {
