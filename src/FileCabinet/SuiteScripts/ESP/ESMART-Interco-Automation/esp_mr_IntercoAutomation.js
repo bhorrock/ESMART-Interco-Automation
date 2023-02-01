@@ -110,6 +110,8 @@ define(['N/runtime','N/search','N/record'],
      */
     const createPurchaseOrder = (oInvoice) => {
 
+        let sFoo = "bar";
+        
         let oPurchaseOrder = record.create({
             type: record.Type.PURCHASE_ORDER,
             isDynamic: true,
